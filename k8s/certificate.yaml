@@ -1,0 +1,20 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: girlwhocriedwool-tls
+spec:
+  secretName: girlwhocriedwool
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: girlwhocriedwool.com
+  dnsNames:
+    - girlwhocriedwool.com
+    - www.girlwhocriedwool.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - girlwhocriedwool.com
+          - www.girlwhocriedwool.com
